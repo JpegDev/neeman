@@ -1,5 +1,5 @@
 public extension FileManager {
-    public func plistDictionaryNamed(_ name: String) -> [AnyHashable: Any]? {
+    public func plistDictionaryNamed(_ name: String) -> [AnyHashable: Any] {
         guard let plistPath = Bundle.main.path(forResource: name, ofType: "plist") else {
             return nil
         }
@@ -54,7 +54,7 @@ open class NeemanSettings {
      - parameter path: The path to the .plist file to load the setting from.
      */
     public convenience init(path: String) {
-        self.init(dictionary: FileManager.default.plistDictionaryAtPath(path)!)
+        self.init(dictionary: FileManager.default.plistDictionaryAtPath(path))
     }
     
     /**
