@@ -1,12 +1,12 @@
 public extension FileManager {
-    public func plistDictionaryNamed(_ name: String) -> [AnyHashable: Any] {
+    public func plistDictionaryNamed(_ name: String) -> [AnyHashable: Any]? {
         guard let plistPath = Bundle.main.path(forResource: name, ofType: "plist") else {
             return nil
         }
         return plistDictionaryAtPath(plistPath)
     }
 
-    public func plistDictionaryAtPath(_ path: String) -> [AnyHashable: Any]? {
+    public func plistDictionaryAtPath(_ path: String) -> [AnyHashable: Any] {
         var plistData: [AnyHashable: Any] = [:]
         if let plistXML = FileManager.default.contents(atPath: path) {
             var propertyListFormat =  PropertyListSerialization.PropertyListFormat.xml //Format of the Property List.
