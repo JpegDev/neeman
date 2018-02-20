@@ -8,15 +8,16 @@ public extension FileManager {
 
     public func plistDictionaryAtPath(_ path: String) -> [AnyHashable: Any]? {
         var plistData: [AnyHashable: Any] = [:]
-        let plistXML = FileManager.default.contents(atPath: path)!
-        var propertyListFormat =  PropertyListSerialization.PropertyListFormat.xml //Format of the Property List.
-        do {
-            plistData = try PropertyListSerialization.propertyList(from: plistXML,
-                                                                   options: .mutableContainersAndLeaves,
-                                                                   format: &propertyListFormat) as? [String:AnyObject] ?? [:]
-            
-        } catch {
-            print("Error reading plist: \(error), format: \(propertyListFormat)")
+        if let plistXML = FileManager.default.contents(atPath: path) {
+            var propertyListFormat =  PropertyListSerialization.PropertyListFormat.xml //Format of the Property List.
+            do {
+                plistData = try PropertyListSerialization.propertyList(from: plistXML,
+                                                                       options: .mutableContainersAndLeaves,
+                                                                       format: &propertyListFormat) as? [String:AnyObject] ?? [:]
+
+            } catch {
+                print("Error reading plist: \(error), format: \(propertyListFormat)")
+            }
         }
         return plistData
     }
