@@ -366,7 +366,9 @@ open class WebViewController: UIViewController,
         autolayoutWebView(webViewPopup)
         
         if popupNavController?.parent == nil {
-            present(popupNavController!, animated: true, completion: nil)
+           present(popupNavController!, animated: true){
+                UIApplication.shared.isStatusBarHidden = false
+            }
         }
     }
 
