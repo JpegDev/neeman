@@ -414,7 +414,7 @@ extension WebViewController: NeemanNavigationDelegate {
         if var webViewController = createNewWebViewController() {
             webViewController.URLString = urlString
             if let viewController = webViewController as? UIViewController {
-                navigationController?.pushViewController(viewController, animated: true)
+                UIApplication.shared.openURL(URL.init(string: urlString)!)
             }
         }
     }
