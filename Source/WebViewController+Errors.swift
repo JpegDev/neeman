@@ -65,7 +65,7 @@ extension WebViewController {
             
             errorViewController.label.text = error.description
             
-            self.addChildViewController(errorViewController)
+            self.addChild(errorViewController)
         }
         
     }
